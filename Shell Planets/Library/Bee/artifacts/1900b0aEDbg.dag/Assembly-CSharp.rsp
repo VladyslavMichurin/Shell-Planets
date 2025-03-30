@@ -353,6 +353,7 @@
 -analyzer:"D:/programs/Unity Editors/2022.3.7f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"D:/programs/Unity Editors/2022.3.7f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/Planet Controller.cs"
+"Assets/Scripts/Rotate Around.cs"
 -langversion:9.0
 
 /deterministic

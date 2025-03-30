@@ -40,10 +40,16 @@ public class PlanetController : MonoBehaviour
     public float groundFlow = 80.0f;
     [Range(0.001f, 100.0f)]
     public float skyFlow = 10.0f;
+    [Range(0.001f, 100.0f)]
+    public float groundMS = 10.0f;
+    [Range(0.001f, 100.0f)]
+    public float skyMS = 30.0f;
 
     private Mesh shellMesh;
     private Material shellMaterial;
     private List<GameObject> shells;
+
+    private GameObject groundHolder, skyHolder;
     private void OnEnable()
     {
         GameObject shellPrimitive = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -53,10 +59,10 @@ public class PlanetController : MonoBehaviour
         shellMaterial = new Material(shellShader);
         shells = new List<GameObject>();
 
-        GameObject groundHolder = new GameObject("Ground Shell Holder");
+        groundHolder = new GameObject("Ground Shell Holder");
         groundHolder.transform.SetParent(this.transform, false);
 
-        GameObject skyHolder = new GameObject("Sky Shell Holder");
+        skyHolder = new GameObject("Sky Shell Holder");
         skyHolder.transform.SetParent(this.transform, false);
 
         for (int i = 0; i < groundShellCount + skyShellCount; i++) 
@@ -89,6 +95,10 @@ public class PlanetController : MonoBehaviour
                 UpdateShaderVariables(i);
             }
         }
+
+        groundHolder.transform.Rotate(0, Time.deltaTime * groundMS, 0);
+        skyHolder.transform.Rotate(0, -Time.deltaTime * skyMS, 0);
+
     }
 
     void UpdateShaderVariables(int _index)
